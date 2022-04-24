@@ -5,16 +5,22 @@ const NavbarComponent = () => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand as={Link} exact to="/">
+        {/* <Navbar.Brand as={Link} exact to="/">
           Home
-        </Navbar.Brand>
+        </Navbar.Brand> */}
         <Nav className="me-auto">
+          <Nav.Link as={Link} to="/">
+            HOME
+          </Nav.Link>
           {/* <Nav.Link href="#home">Home</Nav.Link> */}
           <Nav.Link as={Link} to="/films">
             Films
           </Nav.Link>
           <Nav.Link as={Link} to="/people">
             People
+          </Nav.Link>
+          <Nav.Link as={Link} to="/detail">
+            Detail
           </Nav.Link>
         </Nav>
       </Container>

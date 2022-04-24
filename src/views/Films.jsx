@@ -2,29 +2,39 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { InputGroup, FormControl } from "react-bootstrap";
 import "./Films.css";
 
 const Films = (props) => {
-  let [filmsList, setFilmsList] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (filmsList.length === 0) {
-      fetchFilms();
-    }
-  }, []);
+  const [filmsList, setFilmsList] = useState(props.filmsList);
+  const [search, setSearch] = useState(props.filmsList);
 
-  const fetchFilms = () => {
-    console.log("fetching films");
-    fetch("https://ghibliapi.herokuapp.com/films", { mode: "cors" })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("films fetched", result);
-        setFilmsList(result);
-      });
+  console.log("detailpage filmslist", filmsList);
+
+  const handleSearchInput = (e) => {
+    console.log(e.target.value);
+    const searchedItem = filmsList.filter((list) => {
+      if (list.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+    setSearch(searchedItem);
+    console.log("searchItem", searchedItem);
+    console.log("filmsList", filmsList);
   };
 
-  props.setFilmsApi(filmsList);
+  // const handleSearchInput = (event) => {
+  //   const updatedList = filmsList.filter((list) => {
+  //     list.title.includes("o");
+  //   });
+
+  //   setSearch(updatedList);
+  //   console.log(updatedList);
+  // };
 
   return (
     <div className="container">
@@ -44,19 +54,24 @@ const Films = (props) => {
       >
         ▶️
       </button>
+
+      <input placeholder="Search Anime" onChange={handleSearchInput} />
+
       <hr />
       <div className="row">
-        {filmsList.map(function (val, ind) {
-          return (
-            <FilmCard
-              idNum={props.idNum}
-              setIdNum={props.setIdNum}
-              filmsList={filmsList}
-              val={val}
-              ind={ind}
-            ></FilmCard>
-          );
-        })}
+        {search.length < 1
+          ? setSearch(filmsList)
+          : search.map(function (val, ind) {
+              return (
+                <FilmCard
+                  setPassedId={props.setPassedId}
+                  filmsList={filmsList}
+                  search={search}
+                  val={val}
+                  ind={ind}
+                />
+              );
+            })}
       </div>
     </div>
   );
@@ -70,7 +85,9 @@ function FilmCard(props) {
       className="card col-md-4"
       onClick={() => {
         {
-          props.setIdNum(props.filmsList[props.ind].id);
+          // props.setIdNumPassed(props.filmsList[props.ind].id);
+          props.setPassedId(props.filmsList[props.ind].id);
+          navigate("/detail");
         }
       }}
     >
@@ -80,7 +97,6 @@ function FilmCard(props) {
         <p>Rotten Tomatoes Score: {props.val.rt_score}</p>
         <hr />
         <p> {props.idNum}</p>
-
         <h6>Description</h6>
         <p> {props.val.description} </p>
       </div>

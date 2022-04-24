@@ -4,26 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const People = (props) => {
-  const [peopleList, setPeopleList] = useState([]);
+  const [peopleList, setPeopleList] = useState(props.peopleList);
+
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (peopleList.length === 0) {
-      console.log("fetching People");
-      fetchPeople();
-    }
-  }, []);
-
-  const fetchPeople = () => {
-    fetch("https://ghibliapi.herokuapp.com/people", { mode: "cors" })
-      .then((response) => response.json())
-      .then((result) => {
-        console.log("people fetched", result);
-        setPeopleList(result);
-      })
-      .catch((error) => console.log(error));
-  };
-
   return (
     <div className="container">
       <h1>PEOPLE</h1>
@@ -42,10 +25,8 @@ const People = (props) => {
         {peopleList.map(function (val, ind) {
           return (
             <PeopleCard
-              idNum={props.idNum}
-              setIdNum={props.setIdNum}
+              setPassedId={props.setPassedId}
               peopleList={peopleList}
-              key={val.key}
               val={val}
               ind={ind}
             ></PeopleCard>
@@ -64,7 +45,8 @@ function PeopleCard(props) {
       className="card col-md-4"
       onClick={() => {
         {
-          props.setIdNum(props.peopleList[props.ind].id);
+          props.setPassedId(props.peopleList[props.ind].id);
+          console.log(props.peopleList[props.ind].id);
         }
       }}
     >
