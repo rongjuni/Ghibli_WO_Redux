@@ -2,17 +2,38 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { InputGroup, FormControl } from "react-bootstrap";
 import "./Films.css";
 
 const Films = (props) => {
+  //API directly comes here
+  const [filmsList, setFilmsList] = useState(props.filmsList);
+  // input search result comes here
+  const [search, setSearch] = useState([]);
+
   const navigate = useNavigate();
 
-  const [filmsList, setFilmsList] = useState(props.filmsList);
-  const [search, setSearch] = useState(props.filmsList);
+  // as page rendered, if filmsList has not been imported, it imports
+  useEffect(() => {
+    if (filmsList.length === 0) {
+      fetchFilms();
+    }
+  }, []);
 
-  console.log("detailpage filmslist", filmsList);
+  // fetching films API
 
+  const fetchFilms = () => {
+    console.log("fetching films");
+    fetch("https://ghibliapi.herokuapp.com/films", { mode: "cors" })
+      .then((response) => response.json())
+      .then((result) => {
+        setFilmsList(result);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  console.log("filmsList?", filmsList);
+
+  // input box-updating variable 'search'
   const handleSearchInput = (e) => {
     console.log(e.target.value);
     const searchedItem = filmsList.filter((list) => {
@@ -23,18 +44,9 @@ const Films = (props) => {
       }
     });
     setSearch(searchedItem);
-    console.log("searchItem", searchedItem);
-    console.log("filmsList", filmsList);
   };
 
-  // const handleSearchInput = (event) => {
-  //   const updatedList = filmsList.filter((list) => {
-  //     list.title.includes("o");
-  //   });
-
-  //   setSearch(updatedList);
-  //   console.log(updatedList);
-  // };
+  console.log("searched", search);
 
   return (
     <div className="container">
@@ -59,9 +71,8 @@ const Films = (props) => {
 
       <hr />
       <div className="row">
-        {search.length < 1
-          ? setSearch(filmsList)
-          : search.map(function (val, ind) {
+        {search.length > 0
+          ? search.map(function (val, ind) {
               return (
                 <FilmCard
                   setPassedId={props.setPassedId}
@@ -69,25 +80,38 @@ const Films = (props) => {
                   search={search}
                   val={val}
                   ind={ind}
+                  setSelected={props.setSelected}
+                />
+              );
+            })
+          : filmsList.map(function (val, ind) {
+              return (
+                <FilmCard
+                  setPassedId={props.setPassedId}
+                  filmsList={filmsList}
+                  search={search}
+                  val={val}
+                  ind={ind}
+                  setSelected={props.setSelected}
                 />
               );
             })}
       </div>
-    </div>
-  );
-}; //function film last line//
+    </div> // first div last line
+  ); // Films return last line
+}; // Films function last line//
 
 function FilmCard(props) {
   const navigate = useNavigate();
+  const clickedApi = props.val;
 
   return (
     <div
       className="card col-md-4"
       onClick={() => {
         {
-          // props.setIdNumPassed(props.filmsList[props.ind].id);
           props.setPassedId(props.filmsList[props.ind].id);
-          navigate("/detail");
+          navigate("/detail", { state: { clickedApi: { clickedApi } } });
         }
       }}
     >

@@ -12,50 +12,21 @@ import "./App.css";
 function App() {
   const [filmsList, setFilmsList] = useState([]);
   const [peopleList, setPeopleList] = useState([]);
+
+  //Films ID passed from Films.jsx when it's clicked
   const [passedId, setPassedId] = useState();
+  const [selected, setSelected] = useState();
 
-  useEffect(() => {
-    if (filmsList.length === 0 || peopleList.length === 0) {
-      fetchFilms();
-      fetchPeople();
-    }
-  }, []);
+  // const foundFilm = filmsList.find((films) => {
+  //   return films.id === passedId;
+  // });
 
-  const fetchFilms = () => {
-    console.log("fetching films");
-    fetch("https://ghibliapi.herokuapp.com/films", { mode: "cors" })
-      .then((response) => response.json())
-      .then((result) => {
-        // console.log("films fetched", result);
-        setFilmsList(result);
-      })
-      .catch((error) => console.log(error));
-  };
+  // const foundPeople = peopleList.find((people) => {
+  //   return people.id === passedId;
+  // });
 
-  const fetchPeople = () => {
-    console.log("fetching People");
-    fetch("https://ghibliapi.herokuapp.com/people", { mode: "cors" })
-      .then((response) => response.json())
-      .then((result) => {
-        // console.log("people fetched", result);
-        setPeopleList(result);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  console.log(filmsList);
-  console.log(peopleList);
-
-  const foundFilm = filmsList.find((films) => {
-    return films.id === passedId;
-  });
-
-  const foundPeople = peopleList.find((people) => {
-    return people.id === passedId;
-  });
-
-  console.log("film", foundFilm);
-  console.log("people", foundPeople);
+  // console.log("film", foundFilm);
+  // console.log("people", foundPeople);
   return (
     <Router>
       <NavbarComponent></NavbarComponent>
@@ -69,14 +40,16 @@ function App() {
         <Route
           exact
           path="/people"
-          element={<People setPassedId={setPassedId} peopleList={peopleList} />}
+          element={
+            <People
+              setSelected={setSelected}
+              setPassedId={setPassedId}
+              peopleList={peopleList}
+            />
+          }
         />
 
-        <Route
-          exact
-          path="/detail"
-          element={<Detail foundFilm={foundFilm} foundPeople={foundPeople} />}
-        />
+        <Route exact path="/detail" element={<Detail />} />
       </Routes>
     </Router>
   );

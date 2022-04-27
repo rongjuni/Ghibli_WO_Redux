@@ -4,9 +4,28 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const People = (props) => {
-  const [peopleList, setPeopleList] = useState(props.peopleList);
+  const [peopleList, setPeopleList] = useState([]);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (peopleList.length === 0) {
+      fetchPeople();
+    }
+  }, []);
+
+  const fetchPeople = () => {
+    console.log("fetching People");
+    fetch("https://ghibliapi.herokuapp.com/people", { mode: "cors" })
+      .then((response) => response.json())
+      .then((result) => {
+        setPeopleList(result);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  console.log(peopleList);
+
   return (
     <div className="container">
       <h1>PEOPLE</h1>
