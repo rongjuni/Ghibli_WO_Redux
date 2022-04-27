@@ -27,6 +27,7 @@ const Films = (props) => {
       .then((response) => response.json())
       .then((result) => {
         setFilmsList(result);
+        setSearch(result);
       })
       .catch((error) => console.log(error));
   };
@@ -64,20 +65,21 @@ const Films = (props) => {
 
       <hr />
       <div className="row">
-        {search.length > 0
-          ? search.map(function (val, ind) {
-              return (
-                <FilmCard
-                  setPassedId={props.setPassedId}
-                  filmsList={filmsList}
-                  search={search}
-                  val={val}
-                  ind={ind}
-                  setSelected={props.setSelected}
-                />
-              );
-            })
-          : filmsList.map(function (val, ind) {
+        {search.length < 1
+          ? console.log("empty")
+          : // search.map(function (val, ind) {
+            //     return (
+            //       <FilmCard
+            //         setPassedId={props.setPassedId}
+            //         filmsList={filmsList}
+            //         search={search}
+            //         val={val}
+            //         ind={ind}
+            //         setSelected={props.setSelected}
+            //       />
+            //     );
+            //   })
+            search.map(function (val, ind) {
               return (
                 <FilmCard
                   setPassedId={props.setPassedId}

@@ -28,7 +28,7 @@ const Home = () => {
             <Modal.Body>
               <p>
                 Sometimes you can find more lessons and touching from Animes
-                than movies. I don't force you to be a Otaku. But these are
+                than movies. I don't force you to be a Otaku, but these are
                 'Must-Watch' Animes in your life. Don't miss out these deeply
                 touching Animes.
               </p>
@@ -37,7 +37,9 @@ const Home = () => {
               <Button
                 variant="secondary"
                 onClick={() => {
-                  console.log("resume appears");
+                  alert(
+                    "Button to be directed to combined portfolio main page"
+                  );
                 }}
               >
                 -From Matt Seo-
