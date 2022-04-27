@@ -19,7 +19,7 @@ const Detail = (props) => {
           navigate("/Films");
         }}
       >
-        🏚️
+        ◀️ Back
       </button>
       <hr />
 
