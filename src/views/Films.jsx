@@ -57,14 +57,7 @@ const Films = (props) => {
           navigate("/");
         }}
       >
-        ◀️
-      </button>
-      <button
-        onClick={() => {
-          navigate("/people");
-        }}
-      >
-        ▶️
+        🏚️
       </button>
 
       <input placeholder="Search Anime" onChange={handleSearchInput} />

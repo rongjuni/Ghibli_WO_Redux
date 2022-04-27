@@ -12,10 +12,7 @@ const NavbarComponent = () => {
             HOME
           </Nav.Link>
           <Nav.Link as={Link} to="/films">
-            Films
-          </Nav.Link>
-          <Nav.Link as={Link} to="/people">
-            Characters
+            FILMS
           </Nav.Link>
         </Nav>
       </Container>

@@ -1,17 +1,19 @@
-import { Modal, Button } from "react-bootstrap";
-import HomeHello from "./HomeHello";
 import React from "react";
+import { Modal, Button } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
-import squirtle from "../pictures/squirtle.png";
+import OnePiece from "../pictures/OnePiece.jpg";
 import castle from "../pictures/castle.jpg";
-import "./HomeHello.css";
+import Totoro_pic from "../pictures/Totoro_pic.jpg";
+import bleach from "../pictures/bleach.jpg";
+import Footer from "../components/Footer";
+import "./Home.css";
 
 const Home = () => {
   return (
     <div>
       <Modal.Dialog>
         <Modal.Header closeButton>
-          <Modal.Title>Welcome to JAPANI</Modal.Title>
+          <Modal.Title>Welcome to JAPANIME</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -34,14 +36,17 @@ const Home = () => {
           </Button>
         </Modal.Footer>
       </Modal.Dialog>
+      <br />
       <HomeHello />
+      <br />
+      <Footer />
     </div> //ending line
   );
 
   function HomeHello() {
     return (
       <Carousel>
-        <Carousel.Item style={{ width: "50%" }}>
+        <Carousel.Item>
           <img
             id="homeImgSize"
             className="d-block w-100"
@@ -53,27 +58,42 @@ const Home = () => {
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item style={{ width: "50%" }}>
+
+        <Carousel.Item>
           <img
             id="homeImgSize"
-            className="d-block w-100"
-            src="https://cphoto.asiae.co.kr/listimglink/1/2020102810420269308_1603849322.jpg"
+            className="d-block w-100 "
+            src={Totoro_pic}
             alt="Second slide"
           />
-
           <Carousel.Caption>
             <h3>Second slide label</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </Carousel.Caption>
         </Carousel.Item>
-        <Carousel.Item style={{ width: "50%" }}>
+
+        <Carousel.Item>
           <img
             id="homeImgSize"
             className="d-block w-100"
-            src={squirtle}
+            src={OnePiece}
             alt="Third slide"
           />
+          <Carousel.Caption>
+            <h3>Third slide label</h3>
+            <p>
+              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            </p>
+          </Carousel.Caption>
+        </Carousel.Item>
 
+        <Carousel.Item>
+          <img
+            id="homeImgSize"
+            className="d-block w-100"
+            src={bleach}
+            alt="Third slide"
+          />
           <Carousel.Caption>
             <h3>Third slide label</h3>
             <p>
@@ -83,6 +103,6 @@ const Home = () => {
         </Carousel.Item>
       </Carousel>
     );
-  }
-};
+  } // Helloworld ending line
+}; // Home end line
 export default Home;

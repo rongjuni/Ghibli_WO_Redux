@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const Detail = (props) => {
-  const [found, setFound] = useState(props.foundFilm); // selected API of Films passed from Films.jsx //
-  const [people, setPeople] = useState([]); // People API stored
+  // const [found, setFound] = useState(props.foundFilm); // selected API of Films passed from Films.jsx //
+  // const [people, setPeople] = useState([]); // People API stored
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,7 +32,12 @@ const Detail = (props) => {
         <p>Running time: {clickedApi.running_time} min</p>
         <br></br>
 
-        <img src={clickedApi.image} width="50%" alt="images" />
+        <img
+          src={clickedApi.image}
+          width="50%"
+          alt="images"
+          style={{ marginBottom: "30px" }}
+        />
       </div>
     </div>
   );
