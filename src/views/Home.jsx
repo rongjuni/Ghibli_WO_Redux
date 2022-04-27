@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
 import OnePiece from "../pictures/OnePiece.jpg";
@@ -9,34 +9,43 @@ import Footer from "../components/Footer";
 import "./Home.css";
 
 const Home = () => {
+  let [homeCard, setHomeCard] = useState(true);
+
   return (
     <div>
-      <Modal.Dialog>
-        <Modal.Header closeButton>
-          <Modal.Title>Welcome to JAPANIME</Modal.Title>
-        </Modal.Header>
+      {homeCard === true ? (
+        <div>
+          <Modal.Dialog>
+            <Modal.Header
+              closeButton
+              onHide={() => {
+                setHomeCard(false);
+              }}
+            >
+              <Modal.Title>Welcome to JAPANIME</Modal.Title>
+            </Modal.Header>
 
-        <Modal.Body>
-          <p>
-            Sometimes you find more lessons from Animes than movies. I don't
-            force you to be a Otaku.
-          </p>
-          <p>But these are 'Must-Watch-in-your-life' Animes. </p>
-          <p>Don't miss out these deeply touching Animes. </p>
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button
-            variant="secondary"
-            onClick={() => {
-              console.log("resume appears");
-            }}
-          >
-            -From Matt Seo-
-          </Button>
-        </Modal.Footer>
-      </Modal.Dialog>
-      <br />
+            <Modal.Body>
+              <p>
+                Sometimes you can find more lessons and touching from Animes
+                than movies. I don't force you to be a Otaku. But these are
+                'Must-Watch' Animes in your life. Don't miss out these deeply
+                touching Animes.
+              </p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  console.log("resume appears");
+                }}
+              >
+                -From Matt Seo-
+              </Button>
+            </Modal.Footer>
+          </Modal.Dialog>
+        </div>
+      ) : null}
       <HomeHello />
       <br />
       <Footer />
@@ -54,8 +63,11 @@ const Home = () => {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Howl's Moving Castle</h3>
+            <p>
+              "There You Are Sweetheart, Sorry I'm Late, I Was Looking
+              Everywhere For You."
+            </p>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -67,8 +79,8 @@ const Home = () => {
             alt="Second slide"
           />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>My Neighbor Totoro</h3>
+            <p>"Try Laughing. Then Whatever Scares You Will Go Away."</p>
           </Carousel.Caption>
         </Carousel.Item>
 
@@ -80,9 +92,11 @@ const Home = () => {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            <h3 style={{ color: "#404040" }}>One Piece</h3>
+            <p style={{ color: "#404040" }}>
+              “Stop Counting Only Those Things You Have Lost! What Is Gone, Is
+              Gone! So Ask Yourself This. What Is There... That Still Remains To
+              You?!”
             </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -95,9 +109,11 @@ const Home = () => {
             alt="Third slide"
           />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Bleach</h3>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              "I don't remember saying that I would kill you because I'm a Soul
+              Reaper. The reason I am killing you is simple. It's because you
+              aimed your blade at my only pride."
             </p>
           </Carousel.Caption>
         </Carousel.Item>
