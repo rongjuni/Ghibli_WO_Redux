@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Badge } from "react-bootstrap";
 import "./Films.css";
 
 const Films = (props) => {
@@ -67,19 +68,7 @@ const Films = (props) => {
       <div className="row">
         {search.length < 1
           ? console.log("empty")
-          : // search.map(function (val, ind) {
-            //     return (
-            //       <FilmCard
-            //         setPassedId={props.setPassedId}
-            //         filmsList={filmsList}
-            //         search={search}
-            //         val={val}
-            //         ind={ind}
-            //         setSelected={props.setSelected}
-            //       />
-            //     );
-            //   })
-            search.map(function (val, ind) {
+          : search.map(function (val, ind) {
               return (
                 <FilmCard
                   setPassedId={props.setPassedId}
@@ -96,9 +85,23 @@ const Films = (props) => {
   ); // Films return last line
 }; // Films function last line//
 
-function FilmCard(props) {
+const FilmCard = (props) => {
   const navigate = useNavigate();
   const clickedApi = props.val;
+
+  const scoreColor = (score) => {
+    let color;
+    if (score >= 95) {
+      color = "success";
+    } else if (score >= 80) {
+      color = "warning";
+    } else {
+      color = "danger";
+    }
+    console.log(score);
+    console.log(color);
+    return <Badge bg={color}>{score}</Badge>;
+  };
 
   return (
     <div
@@ -113,7 +116,9 @@ function FilmCard(props) {
       <div className="card-body">
         <h3>{props.val.title} </h3>
         <p>Released: {props.val.release_date}</p>
-        <p>Rotten Tomatoes Score: {props.val.rt_score}</p>
+        <p className="card-text">
+          Rotten Tomatoes Score: {scoreColor(props.val.rt_score)}
+        </p>
         <hr />
         <p> {props.idNum}</p>
         <h6>Description</h6>
@@ -121,6 +126,6 @@ function FilmCard(props) {
       </div>
     </div>
   );
-}
+};
 
 export default Films;
