@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Prt_React_Anime_NoRedux/static/css/main.6276b74b.css",
-    "main.js": "/Prt_React_Anime_NoRedux/static/js/main.1dff85a0.js",
+    "main.js": "/Prt_React_Anime_NoRedux/static/js/main.1c3f1002.js",
     "static/js/787.ed3a3f5c.chunk.js": "/Prt_React_Anime_NoRedux/static/js/787.ed3a3f5c.chunk.js",
     "static/media/Totoro_pic.jpg": "/Prt_React_Anime_NoRedux/static/media/Totoro_pic.ae05d776f82526293633.jpg",
     "static/media/OnePiece.jpg": "/Prt_React_Anime_NoRedux/static/media/OnePiece.80204970a888b7ab18f3.jpg",
@@ -9,11 +9,11 @@
     "static/media/bleach.jpg": "/Prt_React_Anime_NoRedux/static/media/bleach.22a93655ea12e5dbbb76.jpg",
     "index.html": "/Prt_React_Anime_NoRedux/index.html",
     "main.6276b74b.css.map": "/Prt_React_Anime_NoRedux/static/css/main.6276b74b.css.map",
-    "main.1dff85a0.js.map": "/Prt_React_Anime_NoRedux/static/js/main.1dff85a0.js.map",
+    "main.1c3f1002.js.map": "/Prt_React_Anime_NoRedux/static/js/main.1c3f1002.js.map",
     "787.ed3a3f5c.chunk.js.map": "/Prt_React_Anime_NoRedux/static/js/787.ed3a3f5c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6276b74b.css",
-    "static/js/main.1dff85a0.js"
+    "static/js/main.1c3f1002.js"
   ]
 }
