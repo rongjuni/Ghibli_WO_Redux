@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Films from "./views/Films";
 import Home from "./views/Home";
 import Detail from "./views/Detail";
-import NavbarComponent from "./components/Navbar";
+import NavbarComponent from "./views/Navbar";
 import "./App.css";
 
 function App() {

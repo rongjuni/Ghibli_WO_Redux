@@ -5,7 +5,7 @@ import OnePiece from "../pictures/OnePiece.jpg";
 import castle from "../pictures/castle.jpg";
 import Totoro_pic from "../pictures/Totoro_pic.jpg";
 import bleach from "../pictures/bleach.jpg";
-import Footer from "../components/Footer";
+import Footer from "../views/Footer";
 import "./Home.css";
 
 const Home = () => {
