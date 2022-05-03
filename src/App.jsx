@@ -1,7 +1,12 @@
 /*eslint-disable*/
 
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  HashRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Films from "./views/Films";
 import Home from "./views/Home";
 import Detail from "./views/Detail";
@@ -20,7 +25,7 @@ function App() {
     <Router>
       <NavbarComponent />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route path="/" exact element={<Home />} />
         <Route
           exact
           path="/films"
