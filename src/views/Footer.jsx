@@ -10,15 +10,21 @@ const Footer = () => {
           There are more fun projects! Please clicked the link below and enjoy
         </Card.Title>
         {/* <Card.Text>Please</Card.Text> */}
-        <Button variant="outline-secondary" style={{ margin: "0 5px" }}>
+        <Button
+          variant="outline-secondary"
+          onClick={() =>
+            window.open("https://pokemondictionary.herokuapp.com/")
+          }
+          style={{ margin: "0 5px" }}
+        >
+          PokeMon
+        </Button>
+        {/* <Button variant="outline-secondary" style={{ margin: "0 5px" }}>
           Go somewhere
         </Button>
         <Button variant="outline-secondary" style={{ margin: "0 5px" }}>
           Go somewhere
-        </Button>
-        <Button variant="outline-secondary" style={{ margin: "0 5px" }}>
-          Go somewhere
-        </Button>
+        </Button> */}
       </Card.Body>
     </Card>
   );
