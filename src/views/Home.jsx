@@ -36,11 +36,9 @@ const Home = () => {
             <Modal.Footer>
               <Button
                 variant="secondary"
-                onClick={() => {
-                  alert(
-                    "Button to be directed to combined portfolio main page"
-                  );
-                }}
+                onClick={() =>
+                  window.open("https://mattseoblog.herokuapp.com/")
+                }
               >
                 -From Matt Seo-
               </Button>
