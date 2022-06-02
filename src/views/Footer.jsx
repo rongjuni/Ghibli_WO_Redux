@@ -19,6 +19,13 @@ const Footer = () => {
         >
           PokeMon
         </Button>
+        <Button
+          variant="outline-secondary"
+          onClick={() => window.open("https://numbermemorygame.herokuapp.com/")}
+          style={{ margin: "0 5px" }}
+        >
+          Memory Game
+        </Button>
         {/* <Button variant="outline-secondary" style={{ margin: "0 5px" }}>
           Go somewhere
         </Button>
