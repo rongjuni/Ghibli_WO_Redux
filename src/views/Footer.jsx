@@ -13,7 +13,7 @@ const Footer = () => {
         <Button
           variant="outline-secondary"
           onClick={() =>
-            window.open("https://pokemondictionary.herokuapp.com/")
+            window.open("https://https://findpokemon.vercel.app//")
           }
           style={{ margin: "0 5px" }}
         >
@@ -21,7 +21,9 @@ const Footer = () => {
         </Button>
         <Button
           variant="outline-secondary"
-          onClick={() => window.open("https://numbermemorygame.herokuapp.com/")}
+          onClick={() =>
+            window.open("https://https://momorykornum.vercel.app//")
+          }
           style={{ margin: "0 5px" }}
         >
           Memory Game
