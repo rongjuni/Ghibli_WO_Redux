@@ -12,18 +12,14 @@ const Footer = () => {
         {/* <Card.Text>Please</Card.Text> */}
         <Button
           variant="outline-secondary"
-          onClick={() =>
-            window.open("https://https://findpokemon.vercel.app//")
-          }
+          onClick={() => window.open("https://findpokemon.vercel.app//")}
           style={{ margin: "0 5px" }}
         >
           PokeMon
         </Button>
         <Button
           variant="outline-secondary"
-          onClick={() =>
-            window.open("https://https://momorykornum.vercel.app//")
-          }
+          onClick={() => window.open("https://momorykornum.vercel.app//")}
           style={{ margin: "0 5px" }}
         >
           Memory Game
