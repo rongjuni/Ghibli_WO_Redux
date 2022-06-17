@@ -36,9 +36,7 @@ const Home = () => {
             <Modal.Footer>
               <Button
                 variant="secondary"
-                onClick={() =>
-                  window.open("https://mattseoblog.herokuapp.com/")
-                }
+                onClick={() => window.open("https://mattblog.vercel.app/")}
               >
                 -From Matt Seo-
               </Button>
